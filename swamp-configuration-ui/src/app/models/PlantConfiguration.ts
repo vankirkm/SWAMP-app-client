@@ -7,5 +7,6 @@ export interface PlantConfiguration {
     desiredMoistureLevel: number,
     desiredLightLevel: number,
     plantType: PlantType,
-    potSize: PotSize
+    potSize: PotSize,
+    isActive: boolean
 }

@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PlantConfiguration } from 'src/app/models/PlantConfiguration';
+import { PlantType } from 'src/app/models/PlantType';
+import { PotSize } from 'src/app/models/PotSize';
 
 @Component({
   selector: 'app-edit-config-dialog',
@@ -11,8 +13,18 @@ import { PlantConfiguration } from 'src/app/models/PlantConfiguration';
 export class EditConfigDialogComponent {
 
   configForm: FormGroup;
+  plantTypes: string[] = [];
+  potSizes: string[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: PlantConfiguration) {
+
+    Object.keys(PlantType).forEach(key => {
+      this.plantTypes.push(PlantType[key as keyof typeof PlantType]);
+    });
+
+    Object.keys(PotSize).forEach(key => {
+      this.potSizes.push(PotSize[key as keyof typeof PotSize]);
+    });
 
     this.configForm = new FormGroup({
       configName: new FormControl(data.configName, Validators.required),

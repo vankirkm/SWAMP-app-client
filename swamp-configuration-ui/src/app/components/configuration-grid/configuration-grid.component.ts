@@ -22,7 +22,6 @@ export class ConfigurationGridComponent implements OnInit {
   ngOnInit(): void {
     this.configService.getConfigsForUser(1).subscribe(result => {
       this.userConfigs = result;
-      console.log(this.userConfigs);
     });
   }
 

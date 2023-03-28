@@ -25,14 +25,22 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Plant Type</mat-label>
-                <input matInput formControlName="plantType">
+                <mat-select formControlName="plantType">
+                    <mat-option *ngFor="let type of plantTypes" [value]="type">
+                        {{type}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Pot Size</mat-label>
-                <input matInput formControlName="potSize">
+                <mat-select formControlName="potSize">
+                    <mat-option *ngFor="let size of potSizes" [value]="size">
+                        {{size}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
