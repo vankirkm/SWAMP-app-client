@@ -1,11 +1,8 @@
-import {Component, Inject} from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PlantConfiguration } from 'src/app/models/PlantConfiguration';
 
-/**
- * @title Injecting data when opening a dialog
- */
 @Component({
   selector: 'app-edit-config-dialog',
   templateUrl: './edit-config-dialog.component.html',
@@ -28,11 +25,15 @@ export class EditConfigDialogComponent {
   }
 
   onSaveChangesClicked() {
-
+    // call the config service to save the config. If the
+    // config being updated is also the currently active config,
+    // send a serial message to the arduino to update its light
+    // and moisture values
   }
 
   onActiveConfigClicked() {
-
+    // send a serial message to the arduino containing
+    // the new light level and moisture level
   }
 
 }
