@@ -17,5 +17,8 @@ export class PlantConfigurationService {
     return this.http.get<PlantConfiguration[]>(this.baseUrl + "configs/" + userId);
   }
 
+  public updateConfig(plantConfig: PlantConfiguration) {
+    return this.http.put(this.baseUrl + "configs", plantConfig);
+  }
 
 }

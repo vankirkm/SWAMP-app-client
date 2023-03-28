@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PlantConfiguration } from 'src/app/models/PlantConfiguration';
 import { PlantType } from 'src/app/models/PlantType';
 import { PotSize } from 'src/app/models/PotSize';
+import { PlantConfigurationService } from 'src/app/services/plant-configuration.service';
 
 @Component({
   selector: 'app-edit-config-dialog',
@@ -16,7 +17,7 @@ export class EditConfigDialogComponent {
   plantTypes: string[] = [];
   potSizes: string[] = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: PlantConfiguration) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: PlantConfiguration, public configService: PlantConfigurationService) {
 
     Object.keys(PlantType).forEach(key => {
       this.plantTypes.push(PlantType[key as keyof typeof PlantType]);
@@ -27,6 +28,8 @@ export class EditConfigDialogComponent {
     });
 
     this.configForm = new FormGroup({
+      id: new FormControl(data.id),
+      userId: new FormControl(data.userId),
       configName: new FormControl(data.configName, Validators.required),
       desiredMoistureLevel: new FormControl(data.desiredMoistureLevel, Validators.required),
       desiredLightLevel: new FormControl(data.desiredLightLevel, Validators.required),
@@ -41,6 +44,11 @@ export class EditConfigDialogComponent {
     // config being updated is also the currently active config,
     // send a serial message to the arduino to update its light
     // and moisture values
+
+    let toSave = this.configForm.value;
+    console.log(toSave);
+    this.configService.updateConfig(toSave).subscribe();
+  
   }
 
   onActiveConfigClicked() {
