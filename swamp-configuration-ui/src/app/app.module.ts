@@ -14,12 +14,17 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { ConfigurationGridComponent } from './components/configuration-grid/configuration-grid.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditConfigDialogComponent } from './components/edit-config-dialog/edit-config-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    ConfigurationGridComponent
+    ConfigurationGridComponent,
+    EditConfigDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +35,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
     MatSidenavModule,
+    MatFormFieldModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
