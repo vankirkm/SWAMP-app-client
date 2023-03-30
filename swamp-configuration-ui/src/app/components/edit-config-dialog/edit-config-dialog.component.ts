@@ -47,7 +47,9 @@ export class EditConfigDialogComponent {
 
     let toSave = this.configForm.value;
     console.log(toSave);
-    this.configService.updateConfig(toSave).subscribe();
+    this.configService.updateConfig(toSave).subscribe(response => {
+      console.log(response);
+    });
   
   }
 
