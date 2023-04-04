@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "swamp-configuration-ui"
+  "defaultProject": "swamp-configuration-ui",
+  "cli": {
+    "analytics": false
+  }
 }
