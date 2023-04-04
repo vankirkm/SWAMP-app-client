@@ -10,6 +10,7 @@ import { PlantConfiguration } from '../models/PlantConfiguration';
 export class PlantConfigurationService {
 
   baseUrl = environment.configServiceBaseUrl;
+  productionStatus = environment.production;
 
   constructor(private http: HttpClient) { }
 
