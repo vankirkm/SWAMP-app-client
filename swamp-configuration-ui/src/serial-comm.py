@@ -34,7 +34,7 @@ class plantStatus(object):
 		return self.currentMoisturelevel != None and self.currentMoisturePercent != None and self.currentLightLevel != None and self.currentWaterStatus != None
 
 	def writeJson(self):
-		with open('~/assests/data/plantStatus.json', 'w') as outfile:
+		with open('assests/data/plantStatus.json', 'w') as outfile:
 			json.dump(self.__dict__, outfile)
 
 	def __str__(self):
