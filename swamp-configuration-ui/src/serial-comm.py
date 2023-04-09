@@ -31,7 +31,7 @@ class plantStatus(object):
 			self.currentLightLevel = int(value)
 
 	def populated(self):
-		return self.currentMoisturelevel != None and self.currentMoisturePercent != None and self.currentLightLevel != None and self.lastDayWatered != None and self.currentWaterStatus != None
+		return self.currentMoisturelevel != None and self.currentMoisturePercent != None and self.currentLightLevel != None and self.currentWaterStatus != None
 
 	def writeJson(self):
 		with open('~/assests/data/plantStatus.json', 'w') as outfile:
