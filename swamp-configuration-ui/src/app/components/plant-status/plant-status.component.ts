@@ -11,9 +11,8 @@ import { PlantStatusService } from 'src/app/services/plant-status.service';
 })
 export class PlantStatusComponent implements OnInit {
 
-  userStatus: PlantStatus[] = [];
+  userStatus: PlantStatus;
   currentId: number;
-  clickedRows = new Set<PlantStatus>();
 
   displayedColumns: string[] = ['currentMoistireLevel', 'currentMoisturePercent', 'currentLightLevel', 'lastWatered', 'currentWaterStatus'];
 
@@ -24,6 +23,18 @@ export class PlantStatusComponent implements OnInit {
       console.log("dialog");
     });
   }
+
+  updateStatus() {
+    this.statusService.getStatus()
+    .subscribe((data: PlantStatus) => this.userStatus = {
+      currentMoistureLevel: data.currentMoistureLevel,
+      currentMoisturePercent: data.currentMoisturePercent,
+      currentLightLevel: data.currentLightLevel,
+      lastWatered: data.lastWatered,
+      currentWaterStatus: data.currentWaterStatus
+    });
+  }
+
 
   ngOnInit(): void {
     this.statusService.getStatusForUser(1).subscribe(result => {
