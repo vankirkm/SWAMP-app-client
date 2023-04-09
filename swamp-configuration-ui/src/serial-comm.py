@@ -41,21 +41,25 @@ class plantStatus(object):
 	def __str__(self):
 		return json.dumps(self.__dict__)
 
+def isCalibrationMessage(line: str) -> bool:
+		return line.count(' = ') != 1
 if __name__ == '__main__':
 	ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
 	ser.reset_input_buffer()
-
 	while True:
 		plantData = plantStatus()
 		if ser.in_waiting > 0:
 			line = ser.readline().decode('utf-8').rstrip()
 			print(line)
 			# TODO: parse line here
-			plantData.parseAndPopulate(line)
-			if plantData.populated():
-				plantData.writeJson()
-				print(plantData)
-				ser.reset_input_buffer()
+			if isCalibrationMessage(line):
+				continue
+			else:
+				plantData.parseAndPopulate(line)
+				if plantData.populated():
+					plantData.writeJson()
+					print(plantData)
+					ser.reset_input_buffer()
 		time.sleep(1)
 
 
