@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import serial
 import time
+import os
 from typing import Optional
 import json
 
@@ -34,7 +35,10 @@ class plantStatus(object):
 		return self.currentMoisturelevel != None and self.currentMoisturePercent != None and self.currentLightLevel != None and self.currentWaterStatus != None
 
 	def writeJson(self):
-		with open('assests/data/plantStatus.json', 'w') as outfile:
+		parentPath = os.path.dirname(os.path.realpath(__file__))
+		fileName = 'assests/data/plantStatus.json'
+		filePath = os.path.join(parentPath, fileName)
+		with open(filePath, 'w') as outfile:
 			json.dump(self.__dict__, outfile)
 
 	def __str__(self):
