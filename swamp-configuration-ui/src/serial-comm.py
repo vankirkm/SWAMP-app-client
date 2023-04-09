@@ -46,8 +46,8 @@ def isCalibrationMessage(line: str) -> bool:
 if __name__ == '__main__':
 	ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
 	ser.reset_input_buffer()
+	plantData = plantStatus()
 	while True:
-		plantData = plantStatus()
 		if ser.in_waiting > 0:
 			line = ser.readline().decode('utf-8').rstrip()
 			print(line)
@@ -59,7 +59,6 @@ if __name__ == '__main__':
 				if plantData.populated():
 					plantData.writeJson()
 					print(plantData)
-					ser.reset_input_buffer()
 				else:
 					print('Not populated\n', plantData)
 		time.sleep(1)
