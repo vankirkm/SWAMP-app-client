@@ -14,7 +14,6 @@ class plantStatus(object):
 		self.currentMoisturelevel = currentMoistureLevel
 		self.currentMoisturePercent = currentMoisturePercent
 		self.currentLightLevel = currentLightLevel
-		self.lastDayWatered = lastDayWatered
 		self.currentWaterStatus = currentWaterStatus
 	
 	def parseAndPopulate(self, string):
