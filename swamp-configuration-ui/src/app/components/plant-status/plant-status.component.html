@@ -1,0 +1,35 @@
+<table mat-table [dataSource]="userStatus" class="mat-elevation-z8 config-grid">
+
+    <ng-container matColumnDef="configName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.configName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentMoistureLevel">
+      <th mat-header-cell *matHeaderCellDef> Moisture Level </th>
+      <td mat-cell *matCellDef="let element"> {{element.currentMoistureLevel}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentLightLevel">
+      <th mat-header-cell *matHeaderCellDef> Light Level </th>
+      <td mat-cell *matCellDef="let element"> {{element.currentLightLevel}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentMoisturePercent">
+      <th mat-header-cell *matHeaderCellDef> Moisture Percent </th>
+      <td mat-cell *matCellDef="let element"> {{element.currentMoisturePercent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastWatered">
+        <th mat-header-cell *matHeaderCellDef> Date of Last Watering </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastWatered}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentWaterStatus">
+        <th mat-header-cell *matHeaderCellDef> Water Level Ok? </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentWaterStatus}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
+</table>

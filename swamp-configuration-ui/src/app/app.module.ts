@@ -20,13 +20,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { PlantStatusComponent } from './components/plant-status/plant-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     ConfigurationGridComponent,
-    EditConfigDialogComponent
+    EditConfigDialogComponent,
+    PlantStatusComponent
   ],
   imports: [
     BrowserModule,
