@@ -60,6 +60,8 @@ if __name__ == '__main__':
 					plantData.writeJson()
 					print(plantData)
 					ser.reset_input_buffer()
+				else:
+					print('Not populated\n', plantData)
 		time.sleep(1)
 
 
