@@ -10,6 +10,7 @@ import { PlantConfiguration } from '../models/PlantConfiguration';
 export class PlantConfigurationService {
 
   baseUrl = environment.configServiceBaseUrl;
+  productionStatus = environment.production;
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +18,8 @@ export class PlantConfigurationService {
     return this.http.get<PlantConfiguration[]>(this.baseUrl + "configs/" + userId);
   }
 
+  public updateConfig(plantConfig: PlantConfiguration): Observable<PlantConfiguration> {
+    return this.http.put<PlantConfiguration>(this.baseUrl + "configs", plantConfig);
+  }
 
 }
