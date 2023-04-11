@@ -36,7 +36,7 @@ class plantStatus(object):
 
 	def writeJson(self):
 		parentPath = os.path.dirname(os.path.realpath(__file__))
-		fileName = 'assests/data/plantStatus.json'
+		fileName = 'assets/data/plantStatus.json'
 		filePath = os.path.join(parentPath, fileName)
 		with open(filePath, 'w') as outfile:
 			json.dump(self.__dict__, outfile)
